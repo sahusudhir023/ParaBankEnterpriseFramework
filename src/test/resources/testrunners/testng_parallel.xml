@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ParaBank Regression Suite" thread-count="2" parallel="classes">
+
+  <listeners>
+      <listener class-name="com.parabank.qa.reports.ExtentReportListener"></listener>
+      <listener class-name="com.parabank.qa.utils.AllureListener"></listener>
+  </listeners>
+  
+  <test name="ParaBank Regression Tests">
+    <classes>
+      <class name="com.parabank.qa.tests.LoginTest"/>
+      <class name="com.parabank.qa.tests.RegisterTest"/>
+      <class name="com.parabank.qa.tests.TransferFundsTest"/>
+      <class name="com.parabank.qa.tests.BillPayTest"/>
+      <class name="com.parabank.qa.tests.UpdateProfileTest"/>
+      <class name="com.parabank.qa.tests.RequestLoanTest"/>
+      <class name="com.parabank.qa.tests.AccountManagementTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite --> 
