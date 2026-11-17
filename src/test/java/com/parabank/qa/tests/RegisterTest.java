@@ -31,10 +31,23 @@ public class RegisterTest extends BaseTest {
 		
 		Log.info("\n----- Starting Data-Driven Test: testUserRegistration for: " + firstName + " " + lastName + " -----");
 		
-		// FIX: Unique UUID + Timestamp combination taaki parallel run mein bhi kabhi duplicate na ho
-		// Strong & 100% Unique Dynamic Username generation
+//		// FIX: Unique UUID + Timestamp combination taaki parallel run mein bhi kabhi duplicate na ho
+//		// Strong & 100% Unique Dynamic Username generation
+//		String uniqueID = UUID.randomUUID().toString().substring(0, 4);
+//		String dynamicUsername = firstName.trim().toLowerCase() + "_" + uniqueID + "_" + System.nanoTime();
+		
+		// FIX: Length ko chota rakhne ke liye sirf 4 chars UUID aur aakhri ke 4 digits timestamp ke lo
 		String uniqueID = UUID.randomUUID().toString().substring(0, 4);
-		String dynamicUsername = firstName.trim().toLowerCase() + "_" + uniqueID + "_" + System.nanoTime();
+		String timeSuffix = String.valueOf(System.currentTimeMillis());
+		timeSuffix = timeSuffix.substring(timeSuffix.length() - 4); // Sirf last 4 digits
+		
+		// Total length ab max 12-14 characters hogi (e.g., r_a8f3_4921)
+		String shortFirstName = firstName.trim().toLowerCase();
+		if (shortFirstName.length() > 5) {
+		    shortFirstName = shortFirstName.substring(0, 5); // Firstname ko bhi chota kar lo agar lamba ho
+		}
+		
+		String dynamicUsername = shortFirstName + "_" + uniqueID + "_" + timeSuffix;
 		
 		Log.info("Generated unique dynamic username for registration: " + dynamicUsername);
 		

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="ParaBank Smoke Suite">
+
+	<listeners>
+		<listener class-name="com.parabank.qa.reports.ExtentReportListener"></listener>
+		<listener class-name="com.parabank.qa.utils.AllureListener"></listener>
+	</listeners>
+
 	<test name="Smoke Test Cases">
 		<classes>
 			<class name="com.parabank.qa.tests.RegisterTest" />
