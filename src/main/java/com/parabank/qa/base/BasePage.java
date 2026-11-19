@@ -13,20 +13,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.parabank.qa.utils.ConfigReader;
 
 public class BasePage {
-	
+
 	protected WebDriver driver;
 	protected WebDriverWait wait;
-	
-	//Constructor for BasePage to intialize driver
+
+	// Constructor for BasePage to intialize driver
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
 		int explicitTimeout = ConfigReader.getIntProperty("explicitWait", 15);
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(explicitTimeout));
 	}
-	
-	
-	//======= REUSABLE ELEMENT ACTION METHODS =======
-	
+
+	// ======= REUSABLE ELEMENT ACTION METHODS =======
+
 	public void doClick(By locator) {
 		try {
 			WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
@@ -36,7 +35,7 @@ public class BasePage {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void doSendKeys(By locator, String value) {
 		try {
 			WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -47,7 +46,7 @@ public class BasePage {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public String doGetElementText(By locator) {
 		try {
 			WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -57,7 +56,7 @@ public class BasePage {
 			return "";
 		}
 	}
-	
+
 	public boolean isElementDisplayed(By locator) {
 		try {
 			return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).isDisplayed();
@@ -66,7 +65,7 @@ public class BasePage {
 			return false;
 		}
 	}
-	
+
 	public void doSelectByVisibleText(By locator, String text) {
 		try {
 			WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -77,7 +76,7 @@ public class BasePage {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void doSelectByIndex(By locator, int index) {
 		try {
 			WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -88,8 +87,8 @@ public class BasePage {
 			e.printStackTrace();
 		}
 	}
-	
-	public List<WebElement> getElements(By locator){
+
+	public List<WebElement> getElements(By locator) {
 		try {
 			return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
 		} catch (Exception e) {
@@ -97,5 +96,5 @@ public class BasePage {
 			return null;
 		}
 	}
-	
+
 }

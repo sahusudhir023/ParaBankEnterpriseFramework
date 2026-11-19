@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import com.parabank.qa.base.BasePage;
 
 public class RequestLoanPage extends BasePage {
-	
-	//.Locator for Resquest Loan Page
+
+	// ====Locators====
 	private By requestLoanLink = By.xpath("//a[text()='Request Loan']");
 	private By loanAmountField = By.id("amount");
 	private By downPaymentField = By.id("downPayment");
@@ -15,34 +15,33 @@ public class RequestLoanPage extends BasePage {
 	private By applyNowBtn = By.xpath("//input[@value='Apply Now']");
 	private By loanStatusResult = By.id("loanStatus");
 	private By newAccountIdResult = By.id("newAccountId");
-	
+
 	public RequestLoanPage(WebDriver driver) {
 		super(driver);
 	}
-	
-	//.Page Actions
+
+	// ==== PAGE ACTIONS ====
 	public void clickRequestLoanLink() {
 		doClick(requestLoanLink);
 	}
-	
+
 	public void enterLoanDetails(String loanAmount, String downPayment) {
 		doSendKeys(loanAmountField, loanAmount);
 		doSendKeys(downPaymentField, downPayment);
 	}
-	
+
 	public void selectFromAccount(String accountNumber) {
 		doSelectByVisibleText(fromAccountDropdown, accountNumber);
 	}
-	
+
 	public void clickApplyNowButton() {
 		doClick(applyNowBtn);
 	}
-	
+
 	public String getLoanStatusMessage() {
 		return doGetElementText(loanStatusResult);
 	}
-	
-	
+
 	public String getNewLoanAccountNumber() {
 		return doGetElementText(newAccountIdResult);
 	}

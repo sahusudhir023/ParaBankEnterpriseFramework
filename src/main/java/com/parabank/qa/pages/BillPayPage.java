@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 import com.parabank.qa.base.BasePage;
 
 public class BillPayPage extends BasePage {
-	
-	//.Locator for Bill pay page
+
+	// ====Locators====
 	private By billPayLink = By.xpath("//a[text()='Bill Pay']");
 	private By payeeNameField = By.name("payee.name");
 	private By addressField = By.name("payee.address.street");
@@ -21,21 +21,20 @@ public class BillPayPage extends BasePage {
 	private By fromAccountDropdown = By.name("fromAccountId");
 	private By sendPaymentBtn = By.xpath("//input[@value='Send Payment']");
 	private By successMessage = By.xpath("//div[@id='billpayResult']/h1");
-	
+
 	public BillPayPage(WebDriver driver) {
 		super(driver);
 	}
-	
-	//.Page Actions
+
+	// ==== PAGE ACTIONS ====
 	public void clickBillPayLink() {
 		doClick(billPayLink);
 	}
-	
-	public void enterPayeeDetails(String name, String address, String city, String state, 
-			String zip, String phone, String accNo, String amount, String fromAccountNumber) {
-		
 
-        doSendKeys(payeeNameField, name);
+	public void enterPayeeDetails(String name, String address, String city, String state, String zip, String phone,
+			String accNo, String amount, String fromAccountNumber) {
+
+		doSendKeys(payeeNameField, name);
 		doSendKeys(addressField, address);
 		doSendKeys(cityField, city);
 		doSendKeys(stateField, state);
@@ -44,14 +43,14 @@ public class BillPayPage extends BasePage {
 		doSendKeys(accountNumberField, accNo);
 		doSendKeys(verifyAccountField, accNo);
 		doSendKeys(amountField, amount);
-		
+
 		doSelectByIndex(fromAccountDropdown, 0);
 	}
-	
+
 	public void clickSendPaymentButton() {
 		doClick(sendPaymentBtn);
 	}
-	
+
 	public String getBillPaySuccessMessage() {
 		return doGetElementText(successMessage);
 	}

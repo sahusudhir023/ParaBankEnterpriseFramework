@@ -7,7 +7,7 @@ import com.parabank.qa.base.BasePage;
 
 public class RegisterPage extends BasePage {
 	
-	//1. Registration Locators
+	// ====Locators====
 	private By firstNameInput = By.id("customer.firstName");
 	private By lastNameInput = By.id("customer.lastName");
 	private By streetInput = By.id("customer.address.street");
@@ -25,10 +25,10 @@ public class RegisterPage extends BasePage {
 	private By successHeading = By.xpath("//div[@id='rightPanel']/h1");
 	private By successParagraph = By.xpath("//div[@id='rightPanel']/p");
     
-	// Logout link
+	// Logout link Locator
 	private By logoutLink = By.xpath("//a[text()='Log Out']");
 	
-	//2. Constructor
+	
 	public RegisterPage(WebDriver driver) {
 		super(driver);
 	}
@@ -36,7 +36,7 @@ public class RegisterPage extends BasePage {
 	
     //3. ==== PAGE ACTIONS ====
 	
-	//1. Full user registration form fill and sumbit
+	//1. Full user registration form fill 
 	public void registerNewUser(String fName, String lName, String street, String city, String state, 
 			String zip, String phone, String ssn, String username, String password, String confirmPassword) {
 		
